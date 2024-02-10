@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+FILE = $1
+while read NUMBERS;
+do 
+
+factorize() 
+{
+    number=$1
+    factors=()
+    for ((i=2; i<=number/2; i++)); 
+        while ((number % i == 0)); 
+do
+            factors+=("$i")
+            ((number /= i))
+        done
+    if ((number > 1)); then
+        factors+=("$number")
+    echo "${factors[@]}"
+}
+
+main() 
+{
+    local input_file="$1"
+    while IFS= read -r number || [[ -n "$number" ]]; 
+do
+        factors=$(factorize "$number")
+        for factor in $factors;
+            echo "$number=$factor*$(($number / $factor))"
+        done
+    done < "$input_file"
+}
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: $0 <file>"
+    exit 1
