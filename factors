@@ -8,8 +8,7 @@ factorize()
     number=$1
     factors=()
     for ((i=2; i<=number/2; i++)); 
-        while ((number % i == 0)); 
-do
+ 
             factors+=("$i")
             ((number /= i))
         done
