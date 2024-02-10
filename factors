@@ -1,8 +1,8 @@
 #!/usr/bin/bash
   input_file="$1"
-    while IFS= read -r number || [[ -n "$number" ]]; 
+    while IFS= read -r numbers || [[ -n "$numbers" ]]; 
     do
-        factors=$(factorize "$number")
+        factors=$(factorize "$numbers")
         for factor in $factors; 
-            echo "$number=$factor*$(($number / $factor))"
+		echo "$numbers = $(($numbers / $(factors[1]) *$(($factors[1]))"
     done < "$input_file"
