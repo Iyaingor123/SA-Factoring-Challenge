@@ -4,5 +4,5 @@
     do
         factors=$(factorize "$numbers")
         for factor in $factors; 
-		echo "$numbers = $(($numbers / $(factors[1]) *$(($factors[1]))"
+		echo "$numbers=$(($numbers/${factors[1]}))*$(factors[1])"
     done < "$input_file"
