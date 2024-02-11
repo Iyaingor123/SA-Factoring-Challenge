@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-  input_file="$1"
+file=$1
     while read numbers$; 
     do
 	    factors=$(factor $numbers)
-		echo "$numbers=$(($numbers/${factors[1]}))*$(factors[1])"
-	done < $input_file
+		echo "$numbers=$(($numbers/${factors[1]}))*${factors[1]}"
+	done < $file
